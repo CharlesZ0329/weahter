@@ -22,25 +22,36 @@ Page({
     nowWeather: '多云',
     nowWeatherBackground:''
   },
-  onLoad(){
+  onPullDownRefresh(){
+  this.getNow(()=>{
+    wx.stopPullDownRefresh()
+  })
+  },
+  onLoad() {
+  this.getNow()
+  },
+  getNow(callback){
     wx.request({
       url: 'https://test-miniprogram.com/api/weather/now', //API address
       data: {
         city: '西安市' // name of city
       },
       success: res => {
-       let result = res.data.result
-       let temp = result.now.temp
-       let weather = result.now.weather
-       this.setData({
-         nowTemp: temp + '°',
-         nowWeather: weatherMap[weather],
-         nowWeatherBackground:'/images/'+ weather + '-bg.png'
-       })
-       wx.setNavigationBarColor({
-         frontColor: '#000000',
-         backgroundColor: weatherColorMap[weather]
-       })
+        let result = res.data.result
+        let temp = result.now.temp
+        let weather = result.now.weather
+        this.setData({
+          nowTemp: temp + '°',
+          nowWeather: weatherMap[weather],
+          nowWeatherBackground: '/images/' + weather + '-bg.png'
+        })
+        wx.setNavigationBarColor({
+          frontColor: '#000000',
+          backgroundColor: weatherColorMap[weather]
+        })
+      },
+      complete: ()=>{
+        callback && callback()
       }
     })
   }

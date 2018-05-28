@@ -3,10 +3,11 @@
     "pages/index/index"
   ],
   "window":{
-    "backgroundTextStyle":"light",
+    "backgroundTextStyle":"dark",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "天气",
     "navigationBarTextStyle":"black",
-    "navigationBarBackgroundColor": "#cbeefd"
+    "navigationBarBackgroundColor": "#cbeefd",
+    "enablePullDownRefresh": true
   }
 }
