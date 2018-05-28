@@ -1,6 +1,15 @@
+const weatherMap = {
+  'sunny': '晴天',
+  'cloudy': '多云',
+  'overcast': '阴',
+  'lightrain': '小雨',
+  'heavyrain': '大雨',
+  'snow': '雪'
+}
+
 Page({
   data: {
-    nowTemp: '14°',
+    nowTemp: '...',
     nowWeather: '多云'
   },
   onLoad(){
@@ -15,7 +24,7 @@ Page({
        let weather = result.now.weather
        this.setData({
          nowTemp: temp + '°',
-         nowWeather: weather
+         nowWeather: weatherMap[weather]
        })
       }
     })
