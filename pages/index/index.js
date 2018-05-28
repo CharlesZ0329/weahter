@@ -37,6 +37,10 @@ Page({
          nowWeather: weatherMap[weather],
          nowWeatherBackground:'/images/'+ weather + '-bg.png'
        })
+       wx.setNavigationBarColor({
+         frontColor: '#000000',
+         backgroundColor: weatherColorMap[weather]
+       })
       }
     })
   }
