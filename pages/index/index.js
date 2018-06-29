@@ -50,7 +50,21 @@ Page({
           frontColor: '#000000',
           backgroundColor: weatherColorMap[weather]
         })
-        let forecast = []
+
+        let forecast = result.forecast
+        let nowHour = new Date().getHours()
+        let hourlyWeather = []
+        for (let i = 0; i < 24; i += 3) {
+          hourlyWeather.push({
+            time: (i + nowHour) % 24 + '时',
+            iconPath: '/images/'+ forecast[i/3].weather +'-icon.png',
+            temp: forecast[i/3].temp+'°'
+          })
+        }
+        forecast[0].time = '现在'
+        this.setData({
+          forecast: hourlyWeather
+          })
       },
       complete: ()=>{
         callback && callback()
