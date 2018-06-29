@@ -61,7 +61,7 @@ Page({
             temp: forecast[i/3].temp+'°'
           })
         }
-        forecast[0].time = '现在'
+        hourlyWeather[0].time = '现在'
         this.setData({
           forecast: hourlyWeather
           })
