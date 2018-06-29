@@ -20,7 +20,8 @@ Page({
   data: {
     nowTemp: '...',
     nowWeather: '多云',
-    nowWeatherBackground:''
+    nowWeatherBackground:'',
+    forecast: [1,2,3,4,5,6,7,8,9,10]
   },
   onPullDownRefresh(){
   this.getNow(()=>{
@@ -30,7 +31,7 @@ Page({
   onLoad() {
   this.getNow()
   },
-  getNow(callback){
+  getNow(ciallback){
     wx.request({
       url: 'https://test-miniprogram.com/api/weather/now', //API address
       data: {
