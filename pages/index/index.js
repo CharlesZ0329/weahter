@@ -21,7 +21,7 @@ Page({
     nowTemp: '...',
     nowWeather: '多云',
     nowWeatherBackground:'',
-    forecast: [1,2,3,4,5,6,7,8,9,10]
+    forecast: []
   },
   onPullDownRefresh(){
   this.getNow(()=>{
@@ -50,6 +50,7 @@ Page({
           frontColor: '#000000',
           backgroundColor: weatherColorMap[weather]
         })
+        let forecast = []
       },
       complete: ()=>{
         callback && callback()
