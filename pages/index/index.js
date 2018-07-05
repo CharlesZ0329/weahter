@@ -21,7 +21,9 @@ Page({
     nowTemp: '...',
     nowWeather: '多云',
     nowWeatherBackground:'',
-    forecast: []
+    forecast: [],
+    todayTemp: "",
+    todayDate: ""
   },
   onPullDownRefresh(){
   this.getNow(()=>{
@@ -41,6 +43,7 @@ Page({
         let result = res.data.result
         this.setNow(result)
         this.setHourlyWeather(result)
+        this.setToday(result)
       },
       complete: ()=>{
         callback && callback()
@@ -74,6 +77,13 @@ Page({
     hourlyWeather[0].time = '现在'
     this.setData({
       forecast: hourlyWeather
+    })
+  },
+  setToday(result) {
+    let date = new Date()
+    this.setData({
+      todayTemp: `${result.today.minTemp}° - ${result.today.maxTemp}°`,
+      todayDate: `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()} 今天`
     })
   }
 })
