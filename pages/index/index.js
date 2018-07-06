@@ -88,7 +88,10 @@ Page({
   },
   tapDayWeather(){
     wx.showToast({
-      title: 'Clicked!',
+      title: 'Clicked',
+    })
+    wx.navigateTo({
+      url: '/pages/list/list',
     })
   }
 })
